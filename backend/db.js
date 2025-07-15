@@ -1,6 +1,8 @@
-const { Pool } = require('pg')
+// connect backend with db
 
-const pool = new Pool({
+import { Pool } from 'pg'
+
+export const pool = new Pool({
 	user: 'postgres',
 	password: 'superuser@123',
 	host: 'localhost',
@@ -8,6 +10,6 @@ const pool = new Pool({
 	database: 'notedreadsdb',
 })
 
-module.exports = {
-	query: (text, params) => pool.query(text, params),
+export function query(text, params) {
+	return pool.query(text, params)
 }
